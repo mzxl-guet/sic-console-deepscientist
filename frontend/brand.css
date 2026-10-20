@@ -1,0 +1,353 @@
+/* ==========================================================================
+   信通智研台 · 视觉皮肤（SIC Research Console Theme）
+   桂林电子科技大学 · 信息与通信学院
+   --------------------------------------------------------------------------
+   说明：本文件只做"换肤"，不改动任何业务逻辑与组件结构。
+   选择器形如 .bg-\[\#F5F2EC\] 是在覆盖前端编译后产物中的原子类，
+   颜色值请统一走下面的 CSS 变量，便于整体调色。
+   ========================================================================== */
+
+:root {
+  --sic-ink: #0a2338;          /* 主文字：深海军蓝 */
+  --sic-ink-2: #16344d;        /* 次文字 */
+  --sic-navy: #0b4a8f;         /* 桂电蓝 */
+  --sic-blue: #1668b3;         /* 亮蓝 */
+  --sic-cyan: #00a9b5;         /* 信号青 */
+  --sic-teal: #12b3a0;         /* 薄荷绿 */
+  --sic-paper: #edf3f9;        /* 页面底色：冷白 */
+  --sic-line: #c6d8e8;         /* 分隔线 */
+  --sic-muted: #4e6c86;        /* 弱文字 */
+  --sic-glow: rgba(0, 169, 181, 0.18);
+}
+
+/* --------------------------------------------------------------------------
+   1. 字体：去掉 15MB 的思源宋体，改用系统中文字体，首屏更快、观感更"工科"
+   -------------------------------------------------------------------------- */
+body.font-project,
+.font-project {
+  --font-title: 'DS-Satoshi', 'DS-Inter', 'PingFang SC',
+                'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif;
+  --font-reading: 'DS-Inter', 'DS-SourceSans3', 'PingFang SC',
+                  'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif;
+  --font-sans: 'DS-SourceSans3', 'DS-Inter', 'PingFang SC',
+               'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif;
+  --font-soft: 'DS-NunitoSans', 'DS-Inter', 'Microsoft YaHei UI', sans-serif;
+}
+
+body {
+  background-color: var(--sic-paper);
+  color: var(--sic-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 全局工程网格底纹（固定，不随滚动） */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgba(11, 74, 143, 0.055) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(11, 74, 143, 0.055) 1px, transparent 1px),
+    linear-gradient(to right, rgba(11, 74, 143, 0.085) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(11, 74, 143, 0.085) 1px, transparent 1px),
+    radial-gradient(80% 60% at 12% 0%, rgba(0, 169, 181, 0.10), transparent 60%),
+    radial-gradient(70% 55% at 88% 8%, rgba(22, 104, 179, 0.12), transparent 62%);
+  background-size: 26px 26px, 26px 26px, 130px 130px, 130px 130px, 100% 100%, 100% 100%;
+}
+
+/* 让骨架背景透明，露出网格；同时把原来的暖色渐变换成冷色蓝图渐变 + 工程网格 */
+.bg-\[\#F5F2EC\] {
+  background-color: transparent !important;
+  background-image:
+    repeating-linear-gradient(to right, rgba(11, 74, 143, 0.045) 0 1px, transparent 1px 32px),
+    repeating-linear-gradient(to bottom, rgba(11, 74, 143, 0.045) 0 1px, transparent 1px 32px),
+    repeating-linear-gradient(to right, rgba(11, 74, 143, 0.075) 0 1px, transparent 1px 160px),
+    repeating-linear-gradient(to bottom, rgba(11, 74, 143, 0.075) 0 1px, transparent 1px 160px),
+    radial-gradient(1000px at 14% 8%, rgba(0, 169, 181, 0.10), rgba(0, 0, 0, 0) 62%),
+    radial-gradient(860px at 86% 0%, rgba(22, 104, 179, 0.13), rgba(0, 0, 0, 0) 60%),
+    linear-gradient(180deg, #f3f8fc 0%, #e9f1f9 58%, #eff5fb 100%) !important;
+}
+
+/* --------------------------------------------------------------------------
+   2. 主色映射：米色纸张 → 冷白蓝图；土黄 → 桂电蓝/信号青
+   -------------------------------------------------------------------------- */
+.text-\[\#2D2A26\] { color: var(--sic-ink) !important; }
+.bg-\[\#2D2A26\] { background-color: var(--sic-ink) !important; }
+.text-\[\#2D2A26\]\/80 { color: rgba(10, 35, 56, 0.82) !important; }
+.text-\[\#2D2A26\]\/85 { color: rgba(10, 35, 56, 0.88) !important; }
+
+.text-\[\#7E8B97\] { color: var(--sic-muted) !important; }
+.text-\[\#6F6B66\] { color: var(--sic-muted) !important; }
+.text-\[\#9FB1C2\] { color: var(--sic-cyan) !important; }
+
+.bg-\[\#9FB1C2\] { background-color: var(--sic-cyan) !important; }
+.border-\[\#9FB1C2\]\/60 { border-color: rgba(0, 169, 181, 0.55) !important; }
+.decoration-\[\#9FB1C2\] { text-decoration-color: var(--sic-cyan) !important; }
+
+.bg-\[\#D7C6AE\]\/40 { background-color: rgba(11, 74, 143, 0.16) !important; }
+.bg-\[\#D7C6AE\]\/60 { background-color: rgba(11, 74, 143, 0.26) !important; }
+.bg-\[\#D7C6AE\]\/70 { background-color: rgba(11, 74, 143, 0.34) !important; }
+
+/* --------------------------------------------------------------------------
+   3. 顶栏
+   -------------------------------------------------------------------------- */
+header {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.64)) !important;
+  border-bottom: 1px solid rgba(11, 74, 143, 0.10) !important;
+  box-shadow: 0 10px 30px -26px rgba(10, 35, 56, 0.9);
+}
+
+/* 顶栏下沿的一条"信号线" */
+header::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(0, 169, 181, 0) 12%,
+    rgba(0, 169, 181, 0.55) 38%,
+    rgba(22, 104, 179, 0.55) 62%,
+    rgba(0, 169, 181, 0) 88%,
+    transparent 100%);
+}
+
+header a[href="/"] img {
+  filter: drop-shadow(0 4px 10px rgba(11, 74, 143, 0.18));
+}
+
+/* 学院徽标 */
+#sic-brand-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: 6px;
+  padding: 2px 9px 2px 7px;
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.55;
+  color: var(--sic-navy);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(230, 242, 252, 0.9));
+  border: 1px solid rgba(11, 74, 143, 0.18);
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+#sic-brand-tag::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--sic-cyan);
+  box-shadow: 0 0 0 3px rgba(0, 169, 181, 0.18);
+}
+
+/* 顶栏胶囊按钮 */
+header button.border,
+header a.border {
+  border-color: rgba(11, 74, 143, 0.16) !important;
+  background: rgba(255, 255, 255, 0.72) !important;
+  color: var(--sic-ink-2) !important;
+  box-shadow: 0 1px 2px rgba(10, 35, 56, 0.05);
+}
+
+header button.border:hover,
+header a.border:hover {
+  background: #fff !important;
+  border-color: rgba(0, 169, 181, 0.42) !important;
+  color: var(--sic-navy) !important;
+}
+
+/* 设置按钮（主色胶囊） */
+header .bg-\[\#C7AD96\] {
+  background: linear-gradient(135deg, var(--sic-navy), var(--sic-blue)) !important;
+  color: #fff !important;
+  border: none !important;
+  box-shadow: 0 8px 20px -14px rgba(11, 74, 143, 0.9);
+}
+
+/* --------------------------------------------------------------------------
+   4. 主视觉区
+   -------------------------------------------------------------------------- */
+section.relative.min-h-\[100svh\] h1 {
+  letter-spacing: -0.022em;
+  font-weight: 700 !important;
+  line-height: 1.08 !important;
+  background: linear-gradient(180deg, #0a2338 0%, #123a5c 62%, #0b4a8f 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-wrap: balance;
+}
+
+/* 顶部小标签：AUTOMATED RESEARCH */
+section.relative.min-h-\[100svh\] .inline-flex.rounded-full.border {
+  border-color: rgba(0, 169, 181, 0.32) !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(228, 244, 249, 0.86)) !important;
+  color: var(--sic-navy) !important;
+  box-shadow: 0 6px 18px -16px rgba(11, 74, 143, 0.9);
+}
+
+/* 小标题 SURVEY · EXPERIMENT · PUBLISH */
+section.relative.min-h-\[100svh\] .tracking-\[0\.22em\] {
+  color: var(--sic-cyan) !important;
+}
+
+/* 主行动按钮 */
+button.bg-\[\#C7AD96\] {
+  background: linear-gradient(135deg, #0b4a8f 0%, #0e7fa8 52%, #00a9b5 100%) !important;
+  color: #fff !important;
+  border: none !important;
+  box-shadow:
+    0 16px 34px -18px rgba(11, 74, 143, 0.95),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28) !important;
+  letter-spacing: 0.02em;
+}
+
+button.bg-\[\#C7AD96\]:hover {
+  background: linear-gradient(135deg, #0d57a2 0%, #128fba 52%, #00bec4 100%) !important;
+  box-shadow:
+    0 20px 40px -18px rgba(11, 74, 143, 1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.34) !important;
+}
+
+/* 次行动按钮 */
+button.border.bg-white\/70 {
+  border-color: rgba(11, 74, 143, 0.22) !important;
+  background: rgba(255, 255, 255, 0.78) !important;
+  color: var(--sic-navy) !important;
+}
+
+button.border.bg-white\/70:hover {
+  border-color: rgba(0, 169, 181, 0.5) !important;
+  background: #fff !important;
+}
+
+/* 正文小字 */
+section.relative.min-h-\[100svh\] .space-y-1 {
+  color: var(--sic-muted) !important;
+}
+
+/* 主视觉插图：加一层冷光晕，让它从纸面里"浮"出来 */
+.ds-hero-fog {
+  mix-blend-mode: multiply;
+  opacity: 0.28 !important;
+}
+
+.ds-hero-seal {
+  opacity: 0.82 !important;
+}
+
+/* 页脚状态条 */
+.bg-\[\#D7C6AE\]\/60,
+.bg-\[\#C7AD96\]\/85 {
+  background-color: rgba(11, 74, 143, 0.24) !important;
+}
+
+/* --------------------------------------------------------------------------
+   5. 示波器装饰层（由 brand.js 注入）
+   -------------------------------------------------------------------------- */
+#sic-scope {
+  position: absolute;
+  right: 0;
+  top: 118px;
+  width: min(52%, 780px);
+  height: 330px;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.42;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 22%, #000 78%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 22%, #000 78%, transparent 100%);
+}
+
+@media (max-width: 1023px) {
+  #sic-scope {
+    display: none;
+  }
+}
+
+/* 主视觉网格内容压在装饰层之上 */
+section.relative.min-h-\[100svh\] .grid {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* 启动方式弹窗里的行动条：原名是深灰圆角条，改成品牌蓝渐变 */
+div[class*="bg-[rgba(45,42,38"],
+div[class*="bg-[rgba(28,40,46"] {
+  background: linear-gradient(135deg, #0b4a8f 0%, #0e7fa8 52%, #00a9b5 100%) !important;
+  color: #fff !important;
+  box-shadow:
+    0 14px 30px -18px rgba(11, 74, 143, 0.95),
+    inset 0 1px 0 rgba(255, 255, 255, 0.24) !important;
+  letter-spacing: 0.02em;
+}
+
+button[class*="group w-full"]:hover div[class*="bg-[rgba(45,42,38"],
+button[class*="group w-full"]:hover div[class*="bg-[rgba(28,40,46"] {
+  background: linear-gradient(135deg, #0d57a2 0%, #128fba 52%, #00bec4 100%) !important;
+}
+
+/* --------------------------------------------------------------------------
+   6. 细节打磨
+   -------------------------------------------------------------------------- */
+::selection {
+  background: rgba(0, 169, 181, 0.24);
+  color: var(--sic-ink);
+}
+
+/* 用一层极淡的院名水印，把大片空白变成"设计留白" */
+section.relative.min-h-\[100svh\]::after {
+  content: '桂林电子科技大学 · 信息与通信学院';
+  position: absolute;
+  left: 6%;
+  bottom: 24%;
+  font-size: clamp(22px, 2.8vw, 44px);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: rgba(11, 74, 143, 0.055);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
+@media (max-width: 1023px) {
+  section.relative.min-h-\[100svh\]::after {
+    font-size: 20px;
+    letter-spacing: 0.1em;
+    bottom: 28%;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(11, 74, 143, 0.22);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(11, 74, 143, 0.36);
+  background-clip: padding-box;
+}
+
+/* 尊重系统的"减少动态效果"设置 */
+@media (prefers-reduced-motion: reduce) {
+  #sic-scope { display: none; }
+  .ds-hero-fog { animation: none !important; }
+}

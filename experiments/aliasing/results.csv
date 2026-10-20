@@ -1,0 +1,6 @@
+﻿fs(Hz),Nyquist(Hz),Satisfies theorem,Theory alias(Hz),Measured peak(Hz),Abs error(Hz),Peak amplitude
+8000,4000,yes,3000.0,3000.0,0.0,1.0
+4000,2000,no,1000.0,1000.0,0.0,1.0
+3000,1500,no,0.0,0.0,0.0,1.4142
+2000,1000,no,1000.0,1000.0,0.0,1.4142
+1200,600,no,600.0,600.0,0.0,1.4142
