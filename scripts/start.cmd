@@ -1,14 +1,20 @@
 @echo off
 title DeepScientist 服务（关闭本窗口即停止服务）
 setlocal
-set "PATH=D:\DeepScientist\node;D:\DeepScientist\npm-global;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem"
+set "PATH=D:\DeepScientist\node;D:\DeepScientist\npm-global;%APPDATA%\npm;%USERPROFILE%\AppData\Roaming\npm;D:\aiagent\WorkBuddy\resources\vendor\PortableGit\mingw64\bin;D:\aiagent\WorkBuddy\resources\vendor\PortableGit\cmd;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem"
+set "DEEPSCIENTIST_CODEX_BINARY=C:\Users\18015\AppData\Roaming\npm\codex.CMD"
 set "CONDA_PREFIX=D:\conda"
 set "UV_CACHE_DIR=D:\DeepScientist\cache\uv"
 set "DEEPSCIENTIST_HOME=D:\DeepScientist\home"
 set "NODE_OPTIONS="
 set "PYEXE=D:\DeepScientist\home\runtime\python-env\Scripts\python.exe"
 cd /d "D:\DeepScientist\npm-global\node_modules\@researai\deepscientist"
-
+where git >NUL 2>&1
+if errorlevel 1 echo   [!] 没找到 git，任务快照会报 WinError 2
+if not errorlevel 1 echo   git: OK
+where codex >NUL 2>&1
+if errorlevel 1 echo   [!] 没找到 codex，发送消息会报 WinError 2
+if not errorlevel 1 echo   codex: OK
 curl -s -f -o NUL -m 2 http://127.0.0.1:20999/ >NUL 2>&1
 if not errorlevel 1 goto ALREADY
 
