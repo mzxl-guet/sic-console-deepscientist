@@ -1,0 +1,24 @@
+{
+  "inputs": {
+    "R_ohm": 1000.0,
+    "C_F": 1e-07,
+    "f_min_hz": 10.0,
+    "f_max_hz": 100000.0,
+    "n_points": 5001
+  },
+  "derived": {
+    "tau_s": 9.999999999999999e-05,
+    "omega_c_rad_s": 10000.0,
+    "theoretical_fc_hz": 1591.5494309189535,
+    "numerical_measured_fc_hz": 1591.5488925829895,
+    "absolute_error_hz": -0.0005383359639381524,
+    "relative_error_percent": -3.382464618942559e-05,
+    "magnitude_at_fc_db": -3.01029995663981,
+    "phase_at_fc_deg": -44.999990307276605,
+    "rolloff_db_per_decade": -19.957220534942202,
+    "magnitude_at_10hz_db": -0.00017144920494926007,
+    "phase_at_10hz_deg": -0.3599952627020995,
+    "magnitude_at_100khz_db": -35.96469730863286,
+    "phase_at_100khz_deg": -89.08818633038616
+  }
+}
